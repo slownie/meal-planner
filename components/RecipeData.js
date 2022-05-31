@@ -41,6 +41,6 @@ const RecipeData =
     },{
         id: '10',
         title: 'Porkchops'
-    },
+    }
 ]
 export default RecipeData;

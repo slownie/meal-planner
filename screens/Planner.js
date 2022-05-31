@@ -1,12 +1,25 @@
 import React, {useState} from 'react';
 import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import { useIsFocused } from '@react-navigation/native';
 
-export default function Planner() {
+import RecipeData from '../components/RecipeData';
 
-    const [monday, setMonday] = useState('')
+export default function Planner({navigation}) {
+
+    // There is probably a better way to do this but keep it simple
+    const [monday, setMonday] = useState('');
+    const [tuesday, setTuesday] = useState('');
+    const [wednesday, setWednesday] = useState('');
+    const [thursday, setThursday] = useState('');
+    const [friday, setFriday] = useState('');
+    const [saturday, setSaturday] = useState('');
+    const [sunday, setSunday] = useState('');
+    
+    const isFocused = useIsFocused();
 
     return (
+       
         <View style={styles.container}>
             <ScrollView contentInsetAdjustmentBehavior="automatic" showsVerticalScrollIndicator={false}>
 
@@ -21,69 +34,94 @@ export default function Planner() {
                     <Text style={styles.mealsTitle}>Monday</Text>
                     <Picker
                         selectedValue={monday}
-                        mode="dropdown"
                         style={styles.mealPicker}
+                        onValueChange={(value, index) => setMonday(value)}
                     >   
-                        <Picker.Item label="Select a meal" value=""/>
+                        {
+                            RecipeData.map((item) => {
+                                return <Picker.Item key={item.id} label={item.title} value={item.title}/>
+                            })
+                        }
                     </Picker>
 
                     <Text style={styles.mealsTitle}>Tuesday</Text>
                     <Picker
-                        selectedValue={monday}
-                        mode="dropdown"
+                        selectedValue={tuesday}
                         style={styles.mealPicker}
+                        onValueChange={(value, index) => setTuesday(value)}
                     >   
-                        <Picker.Item label="Select a meal" value=""/>
+                        {
+                            RecipeData.map((item) => {
+                                return <Picker.Item key={item.id} label={item.title} value={item.title}/>
+                            })
+                        }
                     </Picker>
 
                     <Text style={styles.mealsTitle}>Wednesday</Text>
                     <Picker
-                        selectedValue={monday}
-                        mode="dropdown"
+                        selectedValue={wednesday}
                         style={styles.mealPicker}
+                        onValueChange={(value, index) => setWednesday(value)}
                     >   
-                        <Picker.Item label="Select a meal" value=""/>
+                        {
+                            RecipeData.map((item) => {
+                                return <Picker.Item key={item.id} label={item.title} value={item.title}/>
+                            })
+                        }
                     </Picker>
 
                     <Text style={styles.mealsTitle}>Thursday</Text>
                     <Picker
-                        selectedValue={monday}
-                        mode="dropdown"
+                        selectedValue={thursday}
                         style={styles.mealPicker}
+                        onValueChange={(value, index) => setThursday(value)}
                     >   
-                        <Picker.Item label="Select a meal" value=""/>
+                        {
+                            RecipeData.map((item) => {
+                                return <Picker.Item key={item.id} label={item.title} value={item.title}/>
+                            })
+                        }
                     </Picker>
 
                     <Text style={styles.mealsTitle}>Friday</Text>
                     <Picker
-                        selectedValue={monday}
-                        mode="dropdown"
+                        selectedValue={friday}
                         style={styles.mealPicker}
+                        onValueChange={(value, index) => setFriday(value)}
                     >   
-                        <Picker.Item label="Select a meal" value=""/>
+                        {
+                            RecipeData.map((item) => {
+                                return <Picker.Item key={item.id} label={item.title} value={item.title}/>
+                            })
+                        }
                     </Picker>
 
                     <Text style={styles.mealsTitle}>Saturday</Text>
                     <Picker
-                        selectedValue={monday}
-                        mode="dropdown"
+                        selectedValue={saturday}
                         style={styles.mealPicker}
+                        onValueChange={(value, index) => setSaturday(value)}
                     >   
-                        <Picker.Item label="Select a meal" value=""/>
+                        {
+                            RecipeData.map((item) => {
+                                return <Picker.Item key={item.id} label={item.title} value={item.title}/>
+                            })
+                        }
                     </Picker>
 
                     <Text style={styles.mealsTitle}>Sunday</Text>
                     <Picker
-                        selectedValue={monday}
-                        mode="dropdown"
+                        selectedValue={sunday}
                         style={styles.mealPicker}
+                        onValueChange={(value, index) => setSunday(value)}
                     >   
-                        <Picker.Item label="Select a meal" value=""/>
+                        {
+                            RecipeData.map((item) => {
+                                return <Picker.Item key={item.id} label={item.title} value={item.title}/>
+                            })
+                        }
                     </Picker>
-
                 </View>
-
-                
             </ScrollView>
         </View>
     );

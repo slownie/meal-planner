@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View,Text,StyleSheet,ScrollView,TouchableOpacity,TextInput,Keyboard,KeyboardAvoidingView} from 'react-native';
 
 import RecipeData from '../components/RecipeData';
@@ -13,16 +13,19 @@ export default function Recipes() {
         // setRecipeItems([...recipeItems, {id: (recipeItems.length+1).toString(), title: text}]);
         // setRecipe(null);
         const newRecipe = {id: (recipeItems.length + 1).toString(), title: text}
-        console.log(newRecipe);
         var newArray = [...recipeItems, newRecipe];
+        RecipeData.push(newRecipe);
         setRecipeItems(newArray);
     }
 
     const deleteRecipe = (index) => {
         let recipeCopy = [...recipeItems];
         recipeCopy.splice(index, 1);
+        RecipeData.splice(index, 1);
         setRecipeItems(recipeCopy);
+
     }
+
 
     return (
         <View style={styles.container}>
