@@ -4,8 +4,10 @@ import { Ionicons } from "@expo/vector-icons";
 
 import Planner from "./screens/Planner";
 import Recipes from "./screens/Recipes";
+import GroceryShop from "./screens/GroceryShop";
 
 const Tab = createBottomTabNavigator();
+
 
 export default function App() {
   return (
@@ -21,7 +23,18 @@ export default function App() {
             ),
           }}
         />
-        {/* <Tab.Screen name="Grocery List" component={GroceryShop} options={{headerShown: false}}/> */}
+
+        <Tab.Screen 
+          name="Grocery List" 
+          component={GroceryShop} 
+          options={{
+            headerShown: false,
+            tabBarIcon: ({color,size}) => (
+              <Ionicons name="cart" color={color} size ={24} />  
+            ),
+          }}
+        /> 
+        
         <Tab.Screen 
           name="Recipes" 
           component={Recipes} 
